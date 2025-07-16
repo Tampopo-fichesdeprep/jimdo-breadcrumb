@@ -1,4 +1,4 @@
-// breadcrumb.js – Crée un fil d'Ariane simple à partir de l'URL
+// breadcrumb.js avec icône "maison" pour Accueil
 
 document.addEventListener("DOMContentLoaded", function () {
   const path = window.location.pathname.split("/").filter(Boolean);
@@ -6,12 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const breadcrumb = document.createElement("nav");
   breadcrumb.className = "breadcrumb";
-  breadcrumb.style.fontSize = "0.9em";
-  breadcrumb.style.margin = "10px 0";
 
   const homeLink = document.createElement("a");
   homeLink.href = "/";
-  homeLink.textContent = "Accueil";
+  homeLink.innerHTML = '<span class="home-icon">🏠</span>Accueil';
   breadcrumb.appendChild(homeLink);
 
   path.forEach((segment, index) => {
@@ -25,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
     breadcrumb.appendChild(crumb);
   });
 
-  // Ajoute le fil d’Ariane tout en haut du contenu
   const target = document.querySelector("#content") || document.body;
   target.insertBefore(breadcrumb, target.firstChild);
 });
